@@ -1,5 +1,8 @@
 .intel_syntax noprefix
 
+.format:
+	.string "0x%llx%llx%llx\n"
+
 .globl fib
 fib:
 
@@ -32,7 +35,13 @@ fib:
 done:
 	#do some printing here
 	# for now put in rax
-	mov rax,	r12
+	mov rdi,	OFFSET .format
+	mov rsi,	r10
+	mov rcx,	r11
+	mov rdx,	r12
+	xor eax,	eax
+	call 	printf
+	#mov rax,	r12
 	ret
 	
 	
