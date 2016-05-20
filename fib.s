@@ -6,6 +6,8 @@
 .globl main
 main:
 	#add rax,	8
+	cmp rdi,	2
+	jbe exit
 	mov rdi,	[rsi+8]
 	xor rsi,	rsi
 	mov rdx,	10
