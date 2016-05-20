@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 
 .format:
-	.string "0x%llx%llx%llx\n"
+	.string "0x%lX%lX%lX\n"
 
 .globl fib
 fib:
