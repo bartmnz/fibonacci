@@ -3,9 +3,14 @@
 .format:
 	.string "0x%lX%lX%lX\n"
 
-.globl fib
-fib:
-
+.globl main
+main:
+	#add rax,	8
+	mov rdi,	[rsi+8]
+	xor rsi,	rsi
+	mov rdx,	10
+	call strtol
+	mov rdi,	rax
 	xor r10,	r10
 	xor r11,	r11
 	xor r12,	r12 # int a = 0
