@@ -14,12 +14,16 @@ main:
 	call strtol		
 	mov rdi,	rax	# move the result from strtol into rdx
 	
-	cmp [rsi],	byte ptr 0 
-	jne exit		# check error code from strol
+	xor rbx,	rbx	#zero rbx
+	cmp [rsi],	byte ptr 0  # check error code from strol
+	cmovne rbx,	rdx	# set error flag if necessary
 	cmp rdi,	301	# make sure number is less than 300
-	jge exit		# bail out if bad data
+	cmovge rbx,	rdx	# set error flag if necessary
 	cmp rdi,	0	# make sure number is > 0
-	jl exit
+	cmovl rbx,	rdx	# set error flag if necessary
+	cmp rbx,	10	# check error flag
+	je exit			# had error
+	
 
 	xor r8,		r8
 	xor r9,		r9	# four registers for 	
