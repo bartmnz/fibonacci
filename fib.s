@@ -1,7 +1,9 @@
 .intel_syntax noprefix
 
+.text
 .format:
 	.string "0x%lX%lX%lX%lX\n"
+
 
 .globl main
 main:
