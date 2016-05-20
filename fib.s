@@ -15,19 +15,19 @@ main:
 	mov rdi,	rax	# move the result from strtol into rdx
 	
 	xor r8,		r8
-	xor r9,		r9	# three registers for 	
+	xor r9,		r9	# four registers for 	
 	xor r10,	r10
 	xor r11,	r11 	# int a = 0
 	
 	xor r12,	r12
-	xor r13,	r13	# three registers for
+	xor r13,	r13	# four registers for
 	xor r14,	r14 	# int b = 1
 	xor r15,	r15
 	add r15,	qword ptr 1
 	
 1:
 	cmp rdi,	0	# check that theloop counter is > 0
-	jbe done		# done with loop and exit
+	jle done		# done with loop and exit
 	
 	
 	add r11,	r15	# add integers a and b
