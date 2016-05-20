@@ -9,11 +9,13 @@ main:
 	jbe exit		# no arguments given bail out
 	
 	mov rdi,	[rsi+8]	# move argv[1] to rdi
-	xor rsi,	rsi	# zero rsi
+	#xor rsi,	rsi	# zero rsi
 	mov rdx,	10	# set base to 10 for strtol
 	call strtol		
 	mov rdi,	rax	# move the result from strtol into rdx
 	
+	cmp [rsi],	byte ptr 0 
+	jne exit		# check error code from strol
 	cmp rdi,	301	# make sure number is less than 300
 	jge exit		# bail out if bad data
 	cmp rdi,	0	# make sure number is > 0
