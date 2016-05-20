@@ -3,6 +3,8 @@
 .text
 .format:
 	.string "0x%lX%lX%lX%lX\n"
+.error:
+	.string "ERROR: useage\n"
 
 
 .globl main
@@ -18,13 +20,13 @@ main:
 	
 	xor rbx,	rbx	#zero rbx
 	cmp [rsi],	byte ptr 0  # check error code from strol
-	cmovne rbx,	rdx	# set error flag if necessary
+	cmovne rbx,	rsi	# set error flag if necessary
 	cmp rdi,	301	# make sure number is less than 300
-	cmovge rbx,	rdx	# set error flag if necessary
+	cmovge rbx,	rsi	# set error flag if necessary
 	cmp rdi,	0	# make sure number is > 0
-	cmovl rbx,	rdx	# set error flag if necessary
-	cmp rbx,	10	# check error flag
-	je exit			# had error
+	cmovl rbx,	rsi	# set error flag if necessary
+	cmp rbx,	0	# check error flag
+	jne exit			# had error
 	
 
 	xor r8,		r8
@@ -69,4 +71,7 @@ done:
 	
 
 exit:
+	mov rdi,	OFFSET .error
+	xor eax,	eax	# zero out eax
+	call printf		# call printf
 	ret
