@@ -14,6 +14,11 @@ main:
 	call strtol		
 	mov rdi,	rax	# move the result from strtol into rdx
 	
+	cmp rdi,	301	# make sure number is less than 300
+	jge exit		# bail out if bad data
+	cmp rdi,	0	# make sure number is > 0
+	jl exit
+
 	xor r8,		r8
 	xor r9,		r9	# four registers for 	
 	xor r10,	r10
