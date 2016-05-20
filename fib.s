@@ -6,7 +6,7 @@
 .globl main
 main:
 	#add rax,	8
-	cmp rdi,	2
+	cmp rdi,	1	
 	jbe exit
 	mov rdi,	[rsi+8]
 	xor rsi,	rsi
@@ -44,8 +44,8 @@ done:
 	# for now put in rax
 	mov rdi,	OFFSET .format
 	mov rsi,	r10
-	mov rcx,	r11
-	mov rdx,	r12
+	mov rcx,	r12
+	mov rdx,	r11
 	xor eax,	eax
 	call 	printf
 	#mov rax,	r12
