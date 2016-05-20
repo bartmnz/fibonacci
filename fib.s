@@ -5,8 +5,8 @@
 
 .globl main
 main:
-	cmp rdi,	1 	# check arg c is >= 2
-	jbe exit		# no arguments given bail out
+	cmp rdi,	2 	# check arg c is >= 2
+	jne exit		# no arguments given bail out
 	
 	mov rdi,	[rsi+8]	# move argv[1] to rdi
 	#xor rsi,	rsi	# zero rsi
